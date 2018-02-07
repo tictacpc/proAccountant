@@ -17,10 +17,10 @@ class ListItem extends Component {
         console.log(this.props.image);
         return (
             <TouchableOpacity onPress={this.onPress}>
-                
+
                 <View style={styles.itemView}>
-                    <Image style={{ height: 25, width: 25}}
-                    source={this.props.image} />
+                    <Image style={{ height: 25, width: 25 }}
+                        source={this.props.image} />
                     <Text style={{ fontSize: 18, color: 'white', paddingLeft: 10, alignItems: 'center', }}>
                         {this.props.id}
                     </Text>
@@ -41,10 +41,14 @@ export default class SlideMenuScreen extends Component {
     //     ),
     // };
 
+    onPressItem = (key) => {
+        this.props.navigation.navigate('Detail');
+    }
+
     renderItem = ({ item }) => (
         <ListItem
             id={item.key}
-            // onPressItem={this.onPressItem}
+            onPressItem={this.onPressItem}
             image={item.image}
         />
     );
@@ -54,7 +58,18 @@ export default class SlideMenuScreen extends Component {
 
         return (
             <View style={styles.container} >
+                <View style={styles.accountContainer}>
+                    <Image style={styles.avatarImg}
+                        source={require('./img/avatar.png')} />
+                    <View style={styles.accountName}>
+                        <Text style={styles.textAc}>Lena W. Lowery</Text>
+                        <Text style={styles.textAc}>(EMP001)</Text>
+                    </View>
+
+                </View>
+
                 <FlatList
+                    style={{ flex: 4,}}
                     data={dataItem}
                     renderItem={this.renderItem}
                 />
@@ -98,9 +113,26 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        backgroundColor: '#3c3c47',
+    },
+    accountContainer: {
+        justifyContent: 'center',
+        padding: 10,
+        flex: 0.2,
+        flexDirection: 'row',
+        justifyContent: 'center',
         alignItems: 'flex-start',
-
-        backgroundColor: '#3c3c47'
+    },
+    textAc: {
+        color: 'white', fontSize: 14, paddingTop: 5, alignItems: 'center', paddingLeft:5
+    },
+    accountName: {
+        flexDirection: 'column',
+        
+    },
+    avatarImg: {
+        width: 65,
+        height: 65
     },
     itemView: {
         flex: 1,

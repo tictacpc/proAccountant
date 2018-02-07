@@ -8,24 +8,30 @@ import {
   View, Button, Image
 } from 'react-native';
 
+import ClockTimer from './learn/1_ClockTimer';
+
 export default class HomeScreen extends Component {
-    static navigationOptions = {
-      drawerLabel: 'Home',
-      drawerIcon: ({ tintColor }) => (
-        <Image
-        //   source={require('./chats-icon.png')}
-        //   style={[styles.icon, {tintColor: tintColor}]}
-        />
-      ),
-    };
-  
-    render() {
-      return (
-        <Button
+
+  static navigationOptions = ({navigation}) => ({
+    drawerLabel: 'Home',
+    title:'Home',
+    // headerLeft: <Button title="Info" onPress={() => { navigation.navigate('DrawerOpen')} } />
+  });
+
+  render() {
+    return (
+      <View style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <ClockTimer></ClockTimer>
+
+        {/* <Button
           onPress={() => this.props.navigation.navigate('Detail')}
           title="Go to Detail"
-        />
-      );
-    }
+        /> */}
+      </View>
+    );
   }
-  
+}

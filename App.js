@@ -17,15 +17,21 @@ import HomeScreen from './screen/HomeScreen';
 import DetailScreen from './screen/DetailScreen';
 import SlideMenuScreen from './screen/SlideMenuScreen';
 
-const DrawerMenuNavigator = DrawerNavigator({
+const StackNavigatorApp = StackNavigator({
   Home: {
     screen: HomeScreen,
   },
   Detail: {
     screen: DetailScreen,
   },
-}, {
-  contentComponent: props => <SlideMenuScreen {...props} />
 });
+
+const DrawerMenuNavigator = DrawerNavigator({
+  MainScreen: {
+    screen: StackNavigatorApp,
+  },
+}, {
+    contentComponent: props => <SlideMenuScreen {...props} />
+  });
 
 export default DrawerMenuNavigator;
